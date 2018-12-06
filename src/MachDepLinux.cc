@@ -129,7 +129,7 @@ namespace Gossamer { namespace Linux {
     {
         struct sigaction sigact = {};
         sigact.sa_sigaction = &printBacktraceAndExit;
-        sigact.sa_flags = SA_RESTART || SA_SIGINFO;
+        sigact.sa_flags = SA_RESTART | SA_SIGINFO;
 
         int sigs[] = {SIGILL, SIGFPE, SIGSEGV, SIGBUS};
         for (unsigned i = 0; i < sizeof(sigs) / sizeof(int); ++i)
