@@ -58,6 +58,11 @@
 #define STD_VECTOR
 #endif
 
+#ifndef BOOST_MAKE_SHARED_HPP
+#include <boost/make_shared.hpp>
+#define BOOST_MAKE_SHARED_HPP
+#endif
+
 template <typename T, bool BoundsCheck = false >
 class MappedArray
 {
@@ -165,7 +170,7 @@ public:
 
         LazyIterator(const std::string& pBaseName, FileFactory& pFactory)
             : mInHolder(pFactory.in(pBaseName)), mIn(**mInHolder),
-              mBuffer(reinterpret_cast<T*>(malloc(sizeof(T)))), mPos(0)
+              mBuffer(boost::make_shared<T>()), mPos(0)
         {
             uint64_t z = pFactory.size(pBaseName);
             if (z % sizeof(T))

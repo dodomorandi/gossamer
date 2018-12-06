@@ -72,7 +72,7 @@ public:
     }
 
     TaggedNum()
-        : mValue(value_param_type())
+        : mValue()
     {
     }
 
