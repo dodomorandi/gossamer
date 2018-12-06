@@ -864,8 +864,6 @@ GossCmdGroupReads::operator()(const GossCmdContext& pCxt)
             }
 
             UnboundedProgressMonitor umon(log, 100000, " read pairs");
-            ReadPairSequenceFileSequence reads(items, fac, lineSrcFac,
-                &umon, &log);
             classPairs(log, fac, mIn, numPasses, T, items, mDontWriteReads,
                 classWriter, K, counts, mPrefix, mLhsName, mRhsName, "txt");
         }
@@ -882,8 +880,6 @@ GossCmdGroupReads::operator()(const GossCmdContext& pCxt)
             }
 
             UnboundedProgressMonitor umon(log, 100000, " read pairs");
-            ReadPairSequenceFileSequence reads(items, fac, lineSrcFac,
-                &umon, &log);
             classPairs(log, fac, mIn, numPasses, T, items, mDontWriteReads,
                 classWriter, K, counts, mPrefix, mLhsName, mRhsName, "fasta");
         }
@@ -900,8 +896,6 @@ GossCmdGroupReads::operator()(const GossCmdContext& pCxt)
             }
 
             UnboundedProgressMonitor umon(log, 100000, " read pairs");
-            ReadPairSequenceFileSequence reads(items, fac, lineSrcFac,
-                &umon, &log);
             classPairs(log, fac, mIn, numPasses, T, items, mDontWriteReads,
                 classWriter, K, counts, mPrefix, mLhsName, mRhsName, "fastq");
         }
@@ -920,8 +914,6 @@ GossCmdGroupReads::operator()(const GossCmdContext& pCxt)
             }
 
             UnboundedProgressMonitor umon(log, 100000, " read pairs");
-            ReadSequenceFileSequence reads(items, fac, lineSrcFac,
-                &umon, &log);
             classReads(log, fac, mIn, numPasses, T, items, mDontWriteReads,
                 classWriter, K, counts, mPrefix, mLhsName, mRhsName, "txt");
         }
@@ -938,8 +930,6 @@ GossCmdGroupReads::operator()(const GossCmdContext& pCxt)
             }
 
             UnboundedProgressMonitor umon(log, 100000, " read pairs");
-            ReadSequenceFileSequence reads(items, fac, lineSrcFac,
-                &umon, &log);
             classReads(log, fac, mIn, numPasses, T, items, mDontWriteReads,
                 classWriter, K, counts, mPrefix, mLhsName, mRhsName, "fasta");
         }
@@ -956,8 +946,6 @@ GossCmdGroupReads::operator()(const GossCmdContext& pCxt)
             }
 
             UnboundedProgressMonitor umon(log, 100000, " read pairs");
-            ReadSequenceFileSequence reads(items, fac, lineSrcFac,
-                &umon, &log);
             classReads(log, fac, mIn, numPasses, T, items, mDontWriteReads,
                 classWriter, K, counts, mPrefix, mLhsName, mRhsName, "fastq");
         }
