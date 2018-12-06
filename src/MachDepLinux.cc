@@ -163,20 +163,21 @@ namespace Gossamer { namespace Linux {
     inline void
     cpuid(uint32_t pInfoType, uint32_t pInfo[4])
     {
-        pInfo[0] = pInfoType;
         __asm__ __volatile__(
-            // ebx is used for PIC on 32-bit. We officially
-            // don't support 32-bit, but it's just as easy to
-            // avoid clobbering it.
-            "mov %%ebx,%%edi;"
+#if defined(__x86_64__) || defined(_M_AMD64) || defined (_M_X64)
+            "pushq %%rbx;"
+#else
+            "pushl %%ebx;"
+#endif
             "cpuid;"
-            "mov %%ebx, %%esi;"
-            "mov %%edi, %%edx;"
-            : "+a" (pInfo[0]),
-              "=S" (pInfo[1]),
-              "=c" (pInfo[2]),
-              "=d" (pInfo[3])
-            : : "edi");
+            "movl %%ebx, %[ebx];"
+#if defined(__x86_64__) || defined(_M_AMD64) || defined (_M_X64)
+            "popq %%rbx;"
+#else
+            "popl %%ebx;"
+#endif
+            : "=a"(pInfo[0]), [ebx] "=m"(pInfo[1]), "=c"(pInfo[2]), "=d"(pInfo[3])
+            : "a"(pInfoType));
     }
 
     void probeCpu()
