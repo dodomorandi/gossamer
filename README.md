@@ -1,5 +1,8 @@
 # Gossamer bioinformatics suite
 
+## Fork notice
+This fork have been created in order to make `xenome classify` work.
+
 ## Prerequisites
 
 This has been built on a fresh install of Ubuntu 16 using only the following
