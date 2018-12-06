@@ -15,6 +15,9 @@ option(MY_GLIBCXX_HAS_THE_WRONG_ABI "the local GNU libstdc++ is using the wrong 
 set(CMAKE_MODULE_PATH ${gossamer_SOURCE_DIR}/cmake)
 set(GOSSAMER_SOURCE_DIR ${gossamer_SOURCE_DIR}/src)
 
+set(CXX_STANDARD 11)
+set(CXX_STANDARD_REQUIRED ON)
+
 if(BUILD_tests)
     enable_testing()
 endif(BUILD_tests)
